@@ -1,0 +1,6 @@
+Message size: 1, Time = 0.000053
+Message size: 1024, Time = 0.000010
+Message size: 1048576, Time = 0.000384
+Message size: 1, Time = 0.000185
+Message size: 1024, Time = 0.000040
+Message size: 1048576, Time = 0.000372
