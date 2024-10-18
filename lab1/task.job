@@ -4,4 +4,4 @@
 
 cd $SLURM_SUBMIT_DIR
 
-mpiexec ./hello.mpi  
+mpiexec hello_mpi  
