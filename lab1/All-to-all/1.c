@@ -5,12 +5,15 @@
 int main(int argc, char *argv[]) {
     MPI_Init(&argc, &argv);
     int rank, commsize;
+    double start_time;
+    double end_time;
     MPI_Comm_size(MPI_COMM_WORLD, &commsize);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     
-    int n = 1024; // Размер сообщения
+    int n = 1024; 
+    if(rank == 0)
+        printf("Commsize: %d\n", commsize);
     FILE *file = NULL;
-
     if (rank == 0) {
         file = fopen("result.txt", "w");
         if (file == NULL) {
@@ -19,60 +22,57 @@ int main(int argc, char *argv[]) {
         }
     }
     for (int i = 0; i <= 1; i++) {
-        // Выделяем память для буфера
         char *sbuf = (char*)malloc(n * sizeof(char));
-        char *rbuf = (char*)malloc(n * commsize * sizeof(char)); // Буфер для получения всех сообщений
+        char *rbuf = (char*)malloc(n * commsize * sizeof(char)); 
 
         if (sbuf == NULL || rbuf == NULL) {
             fprintf(stderr, "Memory allocation failed\n");
             MPI_Abort(MPI_COMM_WORLD, 1);
         }
 
-        // Заполнение сообщения случайными данными
         for (int b = 0; b < n; b++) {
-            sbuf[b] = rand() % 128; // Заполнение sbuf случайными значениями
+            sbuf[b] = rand() % 128; 
         }
 
-        MPI_Request requests[commsize * 2]; // Массив для хранения запросов
-        MPI_Status statuses[commsize * 2]; // Массив для статусов
+        MPI_Request requests[commsize * 2]; 
+        MPI_Status statuses[commsize * 2]; 
 
-        double start_time = MPI_Wtime();
+        if (rank == 0)
+            start_time = MPI_Wtime();
 
-        // Неблокирующая отправка сообщений всем процессам
         for (int i = 0; i < commsize; i++) {
             if (i != rank) {
-                MPI_Isend(sbuf, n, MPI_CHAR, i, 0, MPI_COMM_WORLD, &requests[i]); // Отправка сообщения
+                MPI_Isend(sbuf, n, MPI_CHAR, i, 0, MPI_COMM_WORLD, &requests[i]); 
                 printf("Process %d sent message to process %d\n", rank, i);
             }
-            MPI_Irecv(rbuf + i * n, n, MPI_CHAR, i, 0, MPI_COMM_WORLD, &requests[commsize + i]); // Приём сообщения
+            MPI_Irecv(rbuf + i * n, n, MPI_CHAR, i, 0, MPI_COMM_WORLD, &requests[commsize + i]); 
         }
 
-        MPI_Waitall(commsize * 2, requests, statuses); // Ожидание завершения всех операций
-
-        double end_time = MPI_Wtime();
+        MPI_Waitall(commsize * 2, requests, statuses);
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (rank == 0)
+            end_time = MPI_Wtime();
 
         for (int i = 0; i < commsize; i++) {
             if (i != rank) {
-                printf("Process %d received message from process %d\n", rank, i); // Вывод информации о получении
+                printf("Process %d received message from process %d\n", rank, i); 
             }
         }
 
-        // Запись результатов в файл
         if (rank == 0) {
-            fprintf(file, "Message size: %d, Time = %lf\n", 
+            fprintf(file, "%d %lf\n", 
                     n, end_time - start_time);
-                // printf("Message size: %d, Time = %lf\n", 
-                //        n, end_time - start_time);
+                printf("Message size: %d, Time = %lf\n", 
+                       n, end_time - start_time);
         }
 
-        // Освобождение памяти
         free(rbuf);
         free(sbuf);
         n *= 1024; 
     }
 
     if (rank == 0) {
-        fclose(file); // Закрытие файла
+        fclose(file); 
     }
 
     MPI_Finalize();
