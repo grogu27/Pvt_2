@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
     FILE *file = NULL;
     if (rank == 0) {
-        file = fopen("result.txt", "w");
+        file = fopen("result_4node_4proc.txt", "w");
         if (file == NULL) {
             printf("Ошибка открытия файла!\n");
             MPI_Abort(MPI_COMM_WORLD, 1);
@@ -54,9 +54,9 @@ int main(int argc, char *argv[]) {
 
         if (rank == 0) {
             end_time = MPI_Wtime();
-            fprintf(file, "%d %lf\n", 
-                   n, end_time - start_time);
-            printf("Message size: %d, Time = %lf\n", 
+            //fprintf(file, "%d %lf\n", 
+                  // n, end_time - start_time);
+            printf("%d %lf\n", 
                    n, end_time - start_time);
         }
             

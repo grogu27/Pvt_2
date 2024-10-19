@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
         printf("Commsize: %d\n", commsize);
     FILE *file = NULL;
     if (rank == 0) {
-        file = fopen("result.txt", "w");
+        file = fopen("result_4node_4proc.txt", "w");
         if (file == NULL) {
             printf("Ошибка открытия файла!\n");
             MPI_Abort(MPI_COMM_WORLD, 1);
@@ -39,8 +39,8 @@ int main(int argc, char** argv) {
         msg_tag = rank;
         if (rank == 0)
             start_time = MPI_Wtime();
-        // for(int k = 0; k < commsize ; k++) 
-        // {
+         for(int k = 0; k < commsize - 1 ; k++) 
+        {
             int dest = (rank + 1) % commsize;
             int srs = (rank - 1 + commsize) % commsize;
 
@@ -48,15 +48,15 @@ int main(int argc, char** argv) {
             msg, COUNT, MPI_CHAR, srs, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
             printf("Process %d sent message to %d and received from %d\n", rank, dest, srs);
 
-        //}
+         }
         MPI_Barrier(MPI_COMM_WORLD);
         
 
         if (rank == 0)
         {
             end_time = MPI_Wtime(); 
-            fprintf(file, "%d %lf\n", 
-                   COUNT, end_time - start_time);
+            //fprintf(file, "%d %lf\n", 
+                  // COUNT, end_time - start_time);
             printf("Message size: %d, Time = %lf\n", 
                    COUNT, end_time - start_time);
         }

@@ -1,2 +1,0 @@
-Message size: 1024, Time = 0.000045
-Message size: 1048576, Time = 0.000421

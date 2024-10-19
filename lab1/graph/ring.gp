@@ -6,7 +6,8 @@ set ylabel 'Time (microseconds)'
 set grid
 
 set xtics (1, 1024, 1048576)
-set ytics (0.000023, 0.000069, 0.000377)
-plot '../Ring/result.txt' using 1:2 with lines title 'Time vs Message Size'
+
+plot '../Ring/result.txt' using 1:2 with lines title '2node 8proc',
+    '../ring_4node_4proc.txt' using 1:2 with lines title '4node 4proc'
 
 
