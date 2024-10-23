@@ -4,4 +4,4 @@
 
 cd $SLURM_SUBMIT_DIR
 
-mpiexec 1/hello_mpi  
+mpiexec Middle_rectangle_method/1.c
