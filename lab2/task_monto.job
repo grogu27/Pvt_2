@@ -2,8 +2,6 @@
 #SBATCH --nodes=1 --ntasks-per-node=8       
 #SBATCH --job-name=lab2      
 #SBATCH --nodelist=oak-cn5
-
 cd $SLURM_SUBMIT_DIR
 echo "Currently running on node: $SLURM_NODELIST"
-
-mpiexec Middle_rectangle_method/middle_rectangle_method
+mpiexec Monte_Carlo_method/monte_carlo_method

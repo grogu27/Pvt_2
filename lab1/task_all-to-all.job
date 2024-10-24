@@ -3,5 +3,5 @@
 #SBATCH --job-name=lab1      
 
 cd $SLURM_SUBMIT_DIR
-
+echo "Currently running on node: $SLURM_NODELIST"
 mpiexec All-to-all/hello_mpi  

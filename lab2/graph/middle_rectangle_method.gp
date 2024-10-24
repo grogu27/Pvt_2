@@ -12,6 +12,7 @@ set xtics font 'Calibri,12'
 set ytics font 'Calibri,12'
 set grid
 
+
 # Установка явных значений для xtics
 set xtics (4, 16, 28, 40, 52, 64)
 set xrange [4:64]
@@ -21,5 +22,5 @@ set xrange [4:64]
 
 # Построение графиков с данными из файлов
 plot x title "Linear speedup" with linespoints  lw 2 pt 7 lc rgb 'red', \
-     '../middle_rectangle_method' using 1:2 title "node = 4 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue'
+     '../middle_rectangle_method_s' using 1:2 title "node = 4 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue'
      

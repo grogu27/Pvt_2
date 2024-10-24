@@ -21,4 +21,4 @@ set xrange [4:64]
 
 # Построение графиков с данными из файлов
 plot x title "Linear speedup" with linespoints  lw 2 pt 7 lc rgb 'red', \
-     '../monte_Carlo_method' using 1:2 title "node = 4 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue'
+     '../monte_Carlo_method_s' using 1:2 title "node = 4 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue'
