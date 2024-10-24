@@ -1,62 +1,48 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
-# Загрузка данных из файлов
-def load_data(filename):
-    x, y = [], []
-    with open(filename, 'r') as f:
-        for line in f:
-            values = line.split()
-            if len(values) == 2:
-                x_value = float(values[0])
-                y_value = float(values[1])
-                # Игнорируем точки с y = 1024 и x = 0
-                if x_value != 0 and y_value != 1024:
-                    x.append(x_value)
-                    y.append(y_value)
-    return x, y
+# Данные из трех файлов
+data1 = [(1, 0.038559), (1024, 0.000085), (1048576, 0.01422)]
+data2 = [(1, 0.028127), (1024, 0.000892 ), (1048576, 0.007614)]
+data3 = [(1, 0.023617), (1024, 0.000143), (1048576, 0.009293)]
 
-# Загрузка данных из файлов
-x1, y1 = load_data('../ring_2node_8proc')
-x2, y2 = load_data('../ring_4node_4proc')
-x3, y3 = load_data('../ring_8node_2proc')
+# Разбираем данные на отдельные массивы для каждой серии
+x1, y1 = zip(*data1)
+x2, y2 = zip(*data2)
+x3, y3 = zip(*data3)
 
-# Отладочные выводы
-print(f"Data from '../ring_2node_8proc': {len(x1)} points")
-print(f"Data from '../ring_4node_4proc': {len(x2)} points")
-print(f"Data from '../ring_8node_2proc': {len(x3)} points")
+# Создаем график
+plt.figure(figsize=(8, 6))  # Размер изображения
 
-# Настройка графика
-plt.figure(figsize=(8, 6))
-plt.title('Ring', fontsize=18)
-plt.xlabel('Count (bytes)', fontsize=16)
-plt.ylabel('Time (seconds)', fontsize=16)
-plt.grid()
+# Построение каждой линии
+plt.plot(x1, y1, label="node = 2 proc = 8", marker='o', color='red')
+plt.plot(x2, y2, label="node = 4 proc = 4", marker='o', color='blue')
+plt.plot(x3, y3, label="node = 8 proc = 2", marker='o', color='purple')
 
-# Интерполяция для более плавной линии
-x_values = [1, 1024, 1048576]
-for x_data, y_data, label, color in zip(
-    [x1, x2, x3], 
-    [y1, y2, y3], 
-    ['node = 2 proc = 8', 'node = 4 proc = 4', 'node = 8 proc = 2'], 
-    ['red', 'blue', 'purple']
-):
-    # Интерполяция
-    x_interp = np.linspace(min(x_data), max(x_data), 100)
-    y_interp = np.interp(x_interp, x_data, y_data)
-    plt.plot(x_interp, y_interp, label=label, linewidth=2, color=color)
+# Установка меток осей
+plt.xlabel("Count (bytes)")
+plt.ylabel("Time (seconds)")
 
-# Установка формата осей
-plt.xscale('linear')
-plt.xlim(1, 1048576)  # Устанавливаем диапазон по оси X от 1 до 1048576
-plt.ylim(bottom=0)    # Устанавливаем нижний предел по оси Y
+# Использование логарифмической шкалы для оси X
+plt.xscale('log')
 
-# Установка меток оси X
-plt.xticks([1, 1024, 1048576])  # Явное указание меток по оси X
+# Установка меток по оси X
+plt.xticks([1, 1024, 1048576], ['1', '1024', '1048576'])
 
-# Добавление легенды
-plt.legend(fontsize=12)
+# Установка диапазона по оси Y
+#plt.ylim(0, 0.03)  # Ограничение по Y
 
-# Сохранение графика
-plt.savefig('ring.png')
+# Настройка формата меток по оси Y
+plt.gca().yaxis.set_major_formatter(plt.FormatStrFormatter('%.6f'))
+
+# Включаем сетку
+plt.grid(True)
+
+# Заголовок и легенда
+plt.title("Ring")
+plt.legend()
+
+# Сохраняем график как изображение
+plt.savefig('ring_plot.png')
+
+# Показать график
 plt.show()
