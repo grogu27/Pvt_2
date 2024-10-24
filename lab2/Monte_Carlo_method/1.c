@@ -28,7 +28,8 @@ int main(int argc, char **argv)
     double s = 0;
     double gsum = 0.0;
     srand(time(NULL) + rank);
-    start_time = MPI_Wtime();
+    if (rank == 0)
+        start_time = MPI_Wtime();
     for(int j = 0; j < 2; j++)
     {
         for (int i = rank; i < n; i += commsize) 
@@ -47,7 +48,8 @@ int main(int argc, char **argv)
         gsum = 0.0;
         MPI_Reduce(&s, &gsum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
         MPI_Barrier(MPI_COMM_WORLD);
-        end_time = MPI_Wtime();
+        if (rank == 0)
+            end_time = MPI_Wtime();
 
         printf("Proc: %d, S: %lf\n", rank, s);
 
@@ -57,7 +59,6 @@ int main(int argc, char **argv)
             double res = v * gsum / gin;
             printf("Result: %.12f, n: %d\n", res, n);
             printf("Time: %lf\n", end_time - start_time);
-            printf("gin: %d\n", gin);
         }
         n *= 10;
     }

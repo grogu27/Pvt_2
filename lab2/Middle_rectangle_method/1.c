@@ -24,7 +24,8 @@ int main(int argc, char **argv)
     MPI_Comm_size(MPI_COMM_WORLD, &commsize);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     
-    start_time = MPI_Wtime();
+    if (rank == 0)
+        start_time = MPI_Wtime();
     for (k = 0; delta > eps; n *= 2, k ^= 1) 
     {
         //int points_per_proc = n / commsize;
@@ -43,11 +44,12 @@ int main(int argc, char **argv)
         count++;
     }
     MPI_Barrier(MPI_COMM_WORLD);
-    end_time = MPI_Wtime();
+    ;
     if (rank == 0) 
     {
-    printf("Result: %.12f EPS: %e, n: %d count: %d\n", sq[k], eps, n / 2, count);
-    printf("Time: %lf\n", end_time - start_time);
+        end_time = MPI_Wtime();
+        printf("Result: %.12f EPS: %e, n: %d count: %d\n", sq[k], eps, n / 2, count);
+        printf("Time: %lf\n", end_time - start_time);
     }
     MPI_Finalize();
     return 0;
