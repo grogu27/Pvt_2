@@ -22,9 +22,10 @@ set xrange [4:64]
 
 # Построение графиков с данными из файлов
 plot x title "Linear speedup" with linespoints  lw 2 pt 7 lc rgb 'red', \
-     '../middle_rectangle_method_1node_4proc' using 1:2 title "node = 1 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue', \
-     '../middle_rectangle_method_2node_8proc' using 1:2 title "node = 2 proc = 8" with linespoints lw 2 pt 7 lc rgb 'purple', \
-     '../middle_rectangle_method_4node_7proc' using 1:2 title "node = 4 proc = 7" with linespoints lw 2 pt 7 lc rgb 'green', \
-     '../middle_rectangle_method_4node_8proc' using 1:2 title "node = 4 proc = 8" with linespoints lw 2 pt 7 lc rgb 'black'
+     '../middle_rectangle_method_s' using 1:2 title "" with linespoints lw 2 pt 7 lc rgb 'blue'
+     #'../middle_rectangle_method_1node_4proc' using 1:2 title "node = 1 proc = 4" with linespoints lw 2 pt 7 lc rgb 'blue', \
+     #'../middle_rectangle_method_2node_8proc' using 1:2 title "node = 2 proc = 8" with linespoints lw 2 pt 7 lc rgb 'purple', \
+     #'../middle_rectangle_method_4node_7proc' using 1:2 title "node = 4 proc = 7" with linespoints lw 2 pt 7 lc rgb 'green', \
+     #'../middle_rectangle_method_4node_8proc' using 1:2 title "node = 4 proc = 8" with linespoints lw 2 pt 7 lc rgb 'black'
 
      
