@@ -1,7 +1,6 @@
 #!/bin/bash
-#SBATCH --nodes=1 --ntasks-per-node=8       
+#SBATCH --nodes=4 --ntasks-per-node=8       
 #SBATCH --job-name=lab2      
-#SBATCH --nodelist=oak-cn5
 
 cd $SLURM_SUBMIT_DIR
 echo "Currently running on node: $SLURM_NODELIST"
