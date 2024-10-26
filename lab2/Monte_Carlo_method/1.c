@@ -38,8 +38,10 @@ int main(int argc, char **argv)
             double y = getrand(); /* y in [0;1] */
            
           
+            if (y <= func(x, y)) {
                 in++;
                 s += func(x, y);
+            }
             
         }
         
