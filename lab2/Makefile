@@ -19,4 +19,4 @@ clean_res:
 	rm -rf *.out
 
 graph:
-	gnuplot graph/middle_rectangle_method.gp && gnuplot graph/monte_Carlo_method.gp
+	gnuplot middle_rectangle_method.gp && gnuplot graph/monte_Carlo_method.gp

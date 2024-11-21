@@ -8,16 +8,16 @@ def memory_distributed(w, count_elem, commsize):
 def count_el(mem, w):
     return ((mem/w + 1)**0.5)-1
 
-ram_on_node = 8
-count_proc = 1
+ram_on_node = 47
+count_proc = 8
 count_nodes = 1
-float = 8
-n = 10000
+float = 4
+n = 45000
 d = memory(float, n)
 
 available_memory = (count_nodes * ram_on_node / count_proc) * 1024*1024*1024 * 0.8
 count_elem = count_el(available_memory, float)
-distributed = memory_distributed(float, 29307, 1)
+distributed = memory_distributed(float, count_elem, 24)
 
 
 print("Size: ", d, "B")
