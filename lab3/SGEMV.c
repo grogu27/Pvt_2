@@ -41,15 +41,15 @@ void get_chunk(int a, int b, int commsize, int rank, int *lb, int *ub)
     *ub = *lb + chunk - 1;
 }
 
-void dgemv(float *a, float *b, float *c, int m, int n)
+void dgemv(float *a, float *b, float *c, int m, int n, int lb, int ub, int nrows, int commsize, int rank)
 {
-    int commsize, rank;
-    MPI_Comm_size(MPI_COMM_WORLD, &commsize);
-    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    // int commsize, rank;
+    // MPI_Comm_size(MPI_COMM_WORLD, &commsize);
+    // MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-    int lb, ub;
-    get_chunk(0, m - 1, commsize, rank, &lb, &ub);
-    int nrows = ub - lb + 1;
+    // int lb, ub;
+    // get_chunk(0, m - 1, commsize, rank, &lb, &ub);
+    // int nrows = ub - lb + 1;
 
     for (int i = 0; i < nrows; i++) 
     {
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
     if (rank == 0)
         start_time = MPI_Wtime();
     int lb, ub;
-    get_chunk(0, m - 1, commsize, rank, &lb, &ub); // Декомпозиция матрицы на горизонтальные полосы
+    get_chunk(0, m - 1, commsize, rank, &lb, &ub) ; // Декомпозиция матрицы на горизонтальные полосы
     int nrows = ub - lb + 1;
     float *a = xmalloc(sizeof(*a) * nrows * n);
     float *b = xmalloc(sizeof(*b) * n);
@@ -118,7 +118,7 @@ int main(int argc, char **argv)
     for (int j = 0; j < n; j++)
         b[j] = j + 1;
 
-    dgemv(a, b, c, m, n);
+    dgemv(a, b, c, m, n, lb, ub, nrows, commsize, rank);
     MPI_Barrier(MPI_COMM_WORLD);
     if (rank == 0)
         end_time = MPI_Wtime();

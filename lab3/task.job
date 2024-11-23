@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --nodes=3 --ntasks-per-node=8     
+#SBATCH --nodes=1 --ntasks-per-node=8     
 #SBATCH --job-name=lab3      
 
 cd $SLURM_SUBMIT_DIR
