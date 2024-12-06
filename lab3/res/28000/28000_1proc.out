@@ -1,0 +1,6 @@
+Currently running on node: oak-cn2
+Count proc: 1
+DGEMV: matrix-vector product (c[m] = a[m, n] * b[n]; m = 28000, n = 28000)
+Proc memory used: 2990 MiB
+Memory used: 2990 MiB
+Elapsed time (1 procs): 12.581184 sec.
