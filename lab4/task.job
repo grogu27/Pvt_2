@@ -1,0 +1,8 @@
+#!/bin/bash
+#SBATCH --nodes=4 --ntasks-per-node=8     
+#SBATCH --job-name=lab4      
+
+cd $SLURM_SUBMIT_DIR
+echo "Currently running on node: $SLURM_NODELIST"
+
+mpiexec ./prog 10000 10000
