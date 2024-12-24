@@ -1,0 +1,5 @@
+Currently running on node: oak-cn[2-3]
+Count n: 10000
+Count proc: 16
+MST edges:
+Elapsed time : 0.522780 sec.

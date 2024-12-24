@@ -1,0 +1,127 @@
+#include <mpi.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <float.h>
+
+// Функция для вывода матрицы
+void print_matrix(double *matrix, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%6.2f ", matrix[i * n + j]);
+        }
+        printf("\n");
+    }
+}
+
+// Функция для поиска локального минимума
+void find_local_min(double *d, int *in_tree, int n, double *local_min_value, int *local_min_index) {
+    *local_min_value = DBL_MAX;
+    *local_min_index = -1;
+    for (int i = 0; i < n; i++) {
+        if (!in_tree[i] && d[i] < *local_min_value) {
+            *local_min_value = d[i];
+            *local_min_index = i;
+        }
+    }
+}
+
+int main(int argc, char *argv[]) {
+    int rank, commsize;
+    MPI_Init(&argc, &argv);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+    MPI_Comm_size(MPI_COMM_WORLD, &commsize);
+    double start_time;
+    double end_time;
+    int n = 12; 
+    double *graph = NULL;
+
+    graph = (double*)malloc(n * n * sizeof(double));
+    srand(42); 
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (i == j) {
+                graph[i * n + j] = 0.0; 
+            } else {
+                graph[i * n + j] = (rand() % 100) / 10.0 + 1; 
+                graph[j * n + i] = graph[i * n + j]; 
+            }
+        }
+    }
+    if (rank == 0)
+        print_matrix(graph, n);
+        
+    double *d = (double *)malloc(n * sizeof(double));
+    int *parent = (int *)malloc(n * sizeof(int));
+    int *in_tree = (int *)calloc(n, sizeof(int));
+
+    for (int i = 0; i < n; i++) {
+        d[i] = DBL_MAX;
+        parent[i] = -1;
+    }
+    d[0] = 0.0;
+
+    if (rank == 0)
+        start_time = MPI_Wtime();
+
+    for (int iter = 0; iter < n - 1; iter++) {
+        double local_min_value, global_min_value;
+        int local_min_index, global_min_index;
+
+        find_local_min(d, in_tree, n, &local_min_value, &local_min_index);
+
+        double *local_min_values = (double *)malloc(commsize * sizeof(double));
+        int *local_min_indices = (int *)malloc(commsize * sizeof(int));
+
+        MPI_Gather(&local_min_value, 1, MPI_DOUBLE, local_min_values, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Gather(&local_min_index, 1, MPI_INT, local_min_indices, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+        if (rank == 0) {
+            global_min_value = DBL_MAX;
+            global_min_index = -1;
+            for (int i = 0; i < commsize; i++) {
+                if (local_min_values[i] < global_min_value) {
+                    global_min_value = local_min_values[i];
+                    global_min_index = local_min_indices[i];
+                }
+            }
+        }
+
+        MPI_Bcast(&global_min_value, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&global_min_index, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+        if (global_min_index != -1) {
+            in_tree[global_min_index] = 1;
+
+            for (int i = 0; i < n; i++) {
+                if (!in_tree[i] && graph[global_min_index * n + i] < d[i]) {
+                    d[i] = graph[global_min_index * n + i];
+                    parent[i] = global_min_index;
+                }
+            }
+        }
+
+        free(local_min_values);
+        free(local_min_indices);
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (rank == 0)
+        end_time = MPI_Wtime();
+    
+    if (rank == 0) {
+        printf("Count proc: %d\n", commsize);
+        printf("\nMST edges:\n");
+        for (int i = 1; i < n; i++) {
+            printf("%d - %d: %.2f\n", parent[i], i, graph[parent[i] * n + i]);
+        }
+        printf("Elapsed time : %lf sec.\n", end_time - start_time);
+    }
+    free(graph);
+    free(d);
+    free(parent);
+    free(in_tree);
+
+    MPI_Finalize();
+    return 0;
+}

@@ -51,20 +51,21 @@ int main(int argc, char *argv[])
         rows = (argc > 1) ? atoi(argv[1]) : py * 100;
         cols = (argc > 2) ? atoi(argv[2]) : px * 100;
         if (rows < py) {
-        fprintf(stderr, "Number of rows %d less then number of py processes %d\n", rows, py);
-        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
-    }
-    if (cols < px) {
-        fprintf(stderr, "Number of cols %d less then number of px processes %d\n", cols, px);
-        MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
-    }
-    int args[2] = {rows, cols};
-    MPI_Bcast(&args, NELEMS(args), MPI_INT, 0, MPI_COMM_WORLD);
+            fprintf(stderr, "Number of rows %d less then number of py processes %d\n", rows, py);
+            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
+        }
+        if (cols < px) {
+            fprintf(stderr, "Number of cols %d less then number of px processes %d\n", cols, px);
+            MPI_Abort(MPI_COMM_WORLD, EXIT_FAILURE);
+        }
+        int args[2] = {rows, cols};
+        MPI_Bcast(&args, NELEMS(args), MPI_INT, 0, MPI_COMM_WORLD);
     } else {
         int args[2];
         MPI_Bcast(&args, NELEMS(args), MPI_INT, 0, MPI_COMM_WORLD);
         rows = args[0];
         cols = args[1];
+        printf("%d %d\n", args[0],  args[1]);
     }
 
     // Allocate memory for local 2D subgrids with halo cells [0..ny + 1][0..nx + 1]
@@ -108,7 +109,6 @@ int main(int argc, char *argv[])
     // Top and bottom borders type
     MPI_Datatype row;
     MPI_Type_contiguous(nx, MPI_DOUBLE, &row);
-    MPI_Type_commit(&row);
     MPI_Request reqs[8];
     double thalo = 0;
     double treduce = 0;
