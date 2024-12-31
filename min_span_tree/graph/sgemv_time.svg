@@ -111,7 +111,7 @@
 <g fill="none" color="black" stroke="black" stroke-width="0.50" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="gray" stroke="currentColor" stroke-width="0.50" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M63.6,143.0 L633.2,143.0 M766.7,143.0 L775.0,143.0  '/></g>
+	<path stroke='gray' stroke-dasharray='2,4' class="gridline"  d='M63.6,143.0 L71.9,143.0 M205.4,143.0 L775.0,143.0  '/></g>
 <g fill="none" color="gray" stroke="gray" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="1.00" stroke-linecap="butt" stroke-linejoin="miter">
@@ -222,77 +222,77 @@
 <g fill="none" color="white" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(707.9,85.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(146.6,85.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >n = 1000</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0,   0,   0)'  d='M716.2,81.1 L758.4,81.1 M63.6,538.4 L224.2,539.9 L407.8,538.7 L591.4,538.9 L775.0,539.2  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,538.4) scale(4.50)' color='rgb(  0,   0,   0)'/>
+	<path stroke='rgb(  0,   0,   0)'  d='M154.9,81.1 L197.1,81.1 M63.6,538.4 L224.2,539.9 L407.8,538.7 L591.4,538.9 L775.0,539.2  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,538.4) scale(4.50)' color='rgb(  0,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(224.2,539.9) scale(4.50)' color='rgb(  0,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(407.8,538.7) scale(4.50)' color='rgb(  0,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(591.4,538.9) scale(4.50)' color='rgb(  0,   0,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(775.0,539.2) scale(4.50)' color='rgb(  0,   0,   0)'/>
-	<use xlink:href='#gpPt6' transform='translate(737.3,81.1) scale(4.50)' color='rgb(  0,   0,   0)'/>
+	<use xlink:href='#gpPt6' transform='translate(176.0,81.1) scale(4.50)' color='rgb(  0,   0,   0)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_2" ><title>n = 3000</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(707.9,103.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(146.6,103.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >n = 3000</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0, 255,   0)'  d='M716.2,99.1 L758.4,99.1 M63.6,506.2 L224.2,528.8 L407.8,534.0 L591.4,519.8 L775.0,517.5  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,506.2) scale(4.50)' color='rgb(  0, 255,   0)'/>
+	<path stroke='rgb(  0, 255,   0)'  d='M154.9,99.1 L197.1,99.1 M63.6,506.2 L224.2,528.8 L407.8,534.0 L591.4,519.8 L775.0,517.5  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,506.2) scale(4.50)' color='rgb(  0, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(224.2,528.8) scale(4.50)' color='rgb(  0, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(407.8,534.0) scale(4.50)' color='rgb(  0, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(591.4,519.8) scale(4.50)' color='rgb(  0, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(775.0,517.5) scale(4.50)' color='rgb(  0, 255,   0)'/>
-	<use xlink:href='#gpPt6' transform='translate(737.3,99.1) scale(4.50)' color='rgb(  0, 255,   0)'/>
+	<use xlink:href='#gpPt6' transform='translate(176.0,99.1) scale(4.50)' color='rgb(  0, 255,   0)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_3" ><title>n = 5000</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(707.9,121.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(146.6,121.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >n = 5000</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(  0,   0, 255)'  d='M716.2,117.1 L758.4,117.1 M63.6,442.5 L224.2,495.3 L407.8,501.7 L591.4,507.3 L775.0,502.5  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,442.5) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<path stroke='rgb(  0,   0, 255)'  d='M154.9,117.1 L197.1,117.1 M63.6,442.5 L224.2,495.3 L407.8,501.7 L591.4,507.3 L775.0,502.5  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,442.5) scale(4.50)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(224.2,495.3) scale(4.50)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(407.8,501.7) scale(4.50)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(591.4,507.3) scale(4.50)' color='rgb(  0,   0, 255)'/>
 	<use xlink:href='#gpPt6' transform='translate(775.0,502.5) scale(4.50)' color='rgb(  0,   0, 255)'/>
-	<use xlink:href='#gpPt6' transform='translate(737.3,117.1) scale(4.50)' color='rgb(  0,   0, 255)'/>
+	<use xlink:href='#gpPt6' transform='translate(176.0,117.1) scale(4.50)' color='rgb(  0,   0, 255)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_4" ><title>n = 8000</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(707.9,139.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(146.6,139.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >n = 8000</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(190, 190, 190)'  d='M716.2,135.1 L758.4,135.1 M63.6,285.2 L224.2,424.1 L407.8,417.5 L591.4,417.2 L775.0,395.4  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,285.2) scale(4.50)' color='rgb(190, 190, 190)'/>
+	<path stroke='rgb(190, 190, 190)'  d='M154.9,135.1 L197.1,135.1 M63.6,285.2 L224.2,424.1 L407.8,417.5 L591.4,417.2 L775.0,395.4  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,285.2) scale(4.50)' color='rgb(190, 190, 190)'/>
 	<use xlink:href='#gpPt6' transform='translate(224.2,424.1) scale(4.50)' color='rgb(190, 190, 190)'/>
 	<use xlink:href='#gpPt6' transform='translate(407.8,417.5) scale(4.50)' color='rgb(190, 190, 190)'/>
 	<use xlink:href='#gpPt6' transform='translate(591.4,417.2) scale(4.50)' color='rgb(190, 190, 190)'/>
 	<use xlink:href='#gpPt6' transform='translate(775.0,395.4) scale(4.50)' color='rgb(190, 190, 190)'/>
-	<use xlink:href='#gpPt6' transform='translate(737.3,135.1) scale(4.50)' color='rgb(190, 190, 190)'/>
+	<use xlink:href='#gpPt6' transform='translate(176.0,135.1) scale(4.50)' color='rgb(190, 190, 190)'/>
 </g>
 	</g>
 	<g id="gnuplot_plot_5" ><title>n = 10000</title>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<g transform="translate(707.9,157.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
+	<g transform="translate(146.6,157.0)" stroke="none" fill="black" font-family="Arial" font-size="12.00"  text-anchor="end">
 		<text><tspan font-family="Arial" >n = 10000</tspan></text>
 	</g>
 </g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">
-	<path stroke='rgb(255, 255,   0)'  d='M716.2,153.1 L758.4,153.1 M63.6,134.9 L224.2,273.1 L407.8,333.6 L591.4,366.9 L775.0,347.1  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,134.9) scale(4.50)' color='rgb(255, 255,   0)'/>
+	<path stroke='rgb(255, 255,   0)'  d='M154.9,153.1 L197.1,153.1 M63.6,134.9 L224.2,273.1 L407.8,333.6 L591.4,366.9 L775.0,347.1  '/>	<use xlink:href='#gpPt6' transform='translate(63.6,134.9) scale(4.50)' color='rgb(255, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(224.2,273.1) scale(4.50)' color='rgb(255, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(407.8,333.6) scale(4.50)' color='rgb(255, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(591.4,366.9) scale(4.50)' color='rgb(255, 255,   0)'/>
 	<use xlink:href='#gpPt6' transform='translate(775.0,347.1) scale(4.50)' color='rgb(255, 255,   0)'/>
-	<use xlink:href='#gpPt6' transform='translate(737.3,153.1) scale(4.50)' color='rgb(255, 255,   0)'/>
+	<use xlink:href='#gpPt6' transform='translate(176.0,153.1) scale(4.50)' color='rgb(255, 255,   0)'/>
 </g>
 	</g>
 <g fill="none" color="black" stroke="currentColor" stroke-width="2.00" stroke-linecap="butt" stroke-linejoin="miter">

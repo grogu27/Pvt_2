@@ -20,7 +20,7 @@ set yrange [:32]
 
 # Используем логарифмическую шкалу по оси Y
 #set logscale y
-
+set key left top
 # Построение графиков с данными из файлов
 plot x title "Linear speedup" with linespoints  lw 2 pt 7 lc rgb 'red', \
      'graph/res_1000_speedup.txt' using 1:2 title "n = 1000" with linespoints lw 2 pt 7 lc rgb 'black', \

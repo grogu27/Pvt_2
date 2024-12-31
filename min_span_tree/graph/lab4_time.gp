@@ -15,7 +15,7 @@ set grid
 
 # Установка явных значений для xtics
 set xtics ("1" 1, "8" 8, "16" 16, "24" 24, "32" 32)
-
+set key left top
 # Построение графиков с данными из файлов
 plot 'graph/res_1000.txt' using 1:2 title "n = 1000" with linespoints lw 2 pt 7 lc rgb 'black', \
      'graph/res_3000.txt' using 1:2 title "n = 3000" with linespoints lw 2 pt 7 lc rgb 'green', \
